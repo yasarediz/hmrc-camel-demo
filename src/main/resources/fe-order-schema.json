@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "anyOf": [
+        {"type": "string"},
+        {"type": "null"}
+      ]
+    },
+    "orderLines": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/orderLine" }
+    }
+  },
+  "definitions": {
+    "orderLine": {
+      "type": "object",
+      "required": [ "quantity", "product" ],
+      "properties": {
+        "product": {
+          "type": "object",
+          "required": [ "productId", "productName" ],
+          "properties": {
+            "productId": {
+              "type": "string"
+            },
+            "productName": {
+              "type": "string"
+            }
+          }
+        },
+        "quantity": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
